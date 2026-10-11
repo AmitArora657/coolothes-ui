@@ -14,6 +14,8 @@ const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const successMessage = location.state?.message as string | undefined;
+  const redirectTo =
+    (location.state?.from?.pathname as string | undefined) ?? "/";
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,7 +29,7 @@ const Login = () => {
         password,
       });
 
-      navigate("/");
+      navigate(redirectTo, { replace: true });
     } catch (error) {
       setError(error instanceof Error ? error.message : "Login failed");
     } finally {

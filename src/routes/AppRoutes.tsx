@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
@@ -12,6 +17,11 @@ import Payment from "../pages/Payment/Payment";
 import OrderConfirmation from "../pages/OrderConfirmation/OrderConfirmation";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
+import AdminRoute from "./AdminRoute";
+import AdminLayout from "../layouts/AdminLayout";
+import AdminProducts from "../pages/Admin/AdminProducts";
+import AdminProductForm from "../pages/Admin/AdminProductForm";
+import AdminCategories from "../pages/Admin/AdminCategories";
 
 const AppRoutes = () => {
   return (
@@ -29,6 +39,20 @@ const AppRoutes = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/order-confirmation" element={<OrderConfirmation />} />
           <Route path="/products/:id" element={<ProductDetails />} />
+
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminLayout />
+              </AdminRoute>
+            }
+          >
+            <Route index element={<Navigate to="products" replace />} />
+            <Route path="products" element={<AdminProducts />} />
+            <Route path="products/new" element={<AdminProductForm />} />
+            <Route path="categories" element={<AdminCategories />} />
+          </Route>
 
           <Route path="*" element={<NotFound />} />
         </Routes>
