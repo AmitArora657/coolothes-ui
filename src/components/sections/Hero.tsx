@@ -1,9 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 import Button from "../ui/Button";
 import Container from "../common/Container";
 
 import heroImage from "../../assets/images/hero.png";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="bg-gradient-to-b from-amber-50 to-white py-24">
       <Container>
@@ -19,9 +23,12 @@ const Hero = () => {
             </p>
 
             <div className="mt-8 flex gap-4">
-              <Button>Shop Now</Button>
+              <Button onClick={() => navigate("/products")}>Shop Now</Button>
 
-              <Button className="border border-red-900 text-red-900">
+              <Button
+                onClick={() => navigate("/contact")}
+                variant="outline"
+              >
                 Contact Us
               </Button>
             </div>
