@@ -21,8 +21,8 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
       <p className="mt-4 text-2xl font-bold text-red-900">₹ {product.price}</p>
 
       <p className="mt-6 text-gray-600 leading-7">
-        Beautiful handcrafted Laddu Gopal accessory made with premium quality
-        materials. Perfect for daily worship and festive occasions.
+        {product.description ||
+          "Beautiful handcrafted Laddu Gopal accessory made with premium quality materials. Perfect for daily worship and festive occasions."}
       </p>
 
       <QuantitySelector quantity={quantity} onChange={setQuantity} />

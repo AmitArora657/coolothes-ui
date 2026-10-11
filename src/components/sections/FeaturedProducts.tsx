@@ -1,28 +1,13 @@
-// import Container from "../common/Container";
-// import ProductGrid from "../products/ProductGrid";
-
-// const FeaturedProducts = () => {
-//   return (
-//     <section className="py-20">
-//       <Container>
-//         <h2 className="mb-10 text-center text-4xl font-bold text-red-900">
-//           Featured Products
-//         </h2>
-
-//         <ProductGrid />
-//       </Container>
-//     </section>
-//   );
-// };
-
-// export default FeaturedProducts;
-
 import Container from "../common/Container";
 import Heading from "../common/Heading/Heading";
 import ProductGrid from "../products/ProductGrid";
-import { products } from "../../data/products";
+import useCatalog from "../../hooks/useCatalog";
+
+const FEATURED_COUNT = 8;
 
 const FeaturedProducts = () => {
+  const { products, isLoading, error } = useCatalog();
+
   return (
     <section className="py-16">
       <Container>
@@ -32,7 +17,13 @@ const FeaturedProducts = () => {
         />
 
         <div className="mt-10">
-          <ProductGrid products={products} />
+          {isLoading ? (
+            <p className="text-center text-gray-500">Loading products...</p>
+          ) : error ? (
+            <p className="text-center text-red-600">{error}</p>
+          ) : (
+            <ProductGrid products={products.slice(0, FEATURED_COUNT)} />
+          )}
         </div>
       </Container>
     </section>

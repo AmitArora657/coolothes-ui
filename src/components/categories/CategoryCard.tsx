@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import type { Category } from "../../types/category";
 
 interface CategoryCardProps {
@@ -6,7 +8,10 @@ interface CategoryCardProps {
 
 const CategoryCard = ({ category }: CategoryCardProps) => {
   return (
-    <div className="group cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <Link
+      to={`/products?category=${encodeURIComponent(category.name)}`}
+      className="group block overflow-hidden rounded-xl border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+    >
       <img
         src={category.image}
         alt={category.name}
@@ -16,7 +21,7 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
       <div className="p-4 text-center">
         <h3 className="text-lg font-semibold">{category.name}</h3>
       </div>
-    </div>
+    </Link>
   );
 };
 
