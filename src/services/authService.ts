@@ -57,3 +57,26 @@ export const logoutUser = async (): Promise<void> => {
     credentials: "include",
   });
 };
+
+interface RegisterData {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export const registerUser = async (data: RegisterData): Promise<void> => {
+  const response = await fetch(`${API_URL}/users/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify(data),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.message || "Registration failed");
+  }
+};

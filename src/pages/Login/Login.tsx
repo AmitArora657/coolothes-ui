@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const successMessage = location.state?.message as string | undefined;
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -83,12 +86,32 @@ const Login = () => {
               </p>
             </div>
 
+            {/* Registration Success Message */}
+            {successMessage && (
+              <div
+                role="status"
+                className="mb-5 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800"
+              >
+                <p className="font-semibold">Registration successful!</p>
+
+                <p className="mt-1">
+                  Your account has been created successfully. Please log in
+                  using your registered email and password.
+                </p>
+              </div>
+            )}
+
+            {/* Login Error Message */}
             {error && (
-              <div className="mb-5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+              <div
+                role="alert"
+                className="mb-5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600"
+              >
                 {error}
               </div>
             )}
 
+            {/* Login Form */}
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label
@@ -139,7 +162,21 @@ const Login = () => {
               </button>
             </form>
 
-            <div className="mt-8 text-center">
+            {/* Sign Up Link */}
+            <div className="mt-6 text-center">
+              <p className="text-sm text-gray-600">
+                Don't have an account?{" "}
+                <Link
+                  to="/signup"
+                  className="font-medium text-amber-700 transition hover:text-amber-800"
+                >
+                  Sign Up
+                </Link>
+              </p>
+            </div>
+
+            {/* Back to Home */}
+            <div className="mt-6 text-center">
               <Link
                 to="/"
                 className="text-sm font-medium text-amber-700 transition hover:text-amber-800"

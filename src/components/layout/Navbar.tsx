@@ -53,9 +53,18 @@ const Navbar = () => {
           </NavLink>
 
           {!isAuthenticated ? (
-            <NavLink to="/login" className={linkClass}>
-              Login
-            </NavLink>
+            <>
+              <NavLink to="/login" className={linkClass}>
+                Login
+              </NavLink>
+
+              <NavLink
+                to="/signup"
+                className="rounded-xl bg-amber-600 px-4 py-2 font-medium text-white transition hover:bg-amber-700"
+              >
+                Sign Up
+              </NavLink>
+            </>
           ) : (
             <>
               <span className="font-medium text-gray-700">

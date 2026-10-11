@@ -11,6 +11,7 @@ import Checkout from "../pages/Checkout/Checkout";
 import Payment from "../pages/Payment/Payment";
 import OrderConfirmation from "../pages/OrderConfirmation/OrderConfirmation";
 import Login from "../pages/Login/Login";
+import SignUp from "../pages/SignUp/SignUp";
 
 const AppRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const AppRoutes = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/order-confirmation" element={<OrderConfirmation />} />
           <Route path="/products/:id" element={<ProductDetails />} />
 
