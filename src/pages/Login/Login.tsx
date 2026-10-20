@@ -3,6 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext";
 
+import krishnaImage from "../../assets/images/Krishna_pic.jpg";
+import logoImage from "../../assets/images/logo.jpg";
+
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -43,7 +46,7 @@ const Login = () => {
         {/* Left Section */}
         <div className="relative hidden min-h-[560px] overflow-hidden md:block">
           <img
-            src="/src/assets/images/Krishna_pic.jpg"
+            src={krishnaImage}
             alt="Krishna Ji"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -73,7 +76,7 @@ const Login = () => {
             <div className="mb-8 text-center">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-amber-200 bg-amber-50">
                 <img
-                  src="/src/assets/images/logo.jpg"
+                  src={logoImage}
                   alt="Gopal Ji Ki Dukaan"
                   className="h-full w-full object-cover"
                 />
