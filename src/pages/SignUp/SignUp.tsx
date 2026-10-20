@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import krishnaImage from "../../assets/images/Krishna_pic.jpg";
+import logoImage from "../../assets/images/logo.jpg";
+
 import { registerUser } from "../../services/authService";
 
 const SignUp = () => {
@@ -58,7 +61,7 @@ const SignUp = () => {
       <div className="mx-auto grid max-w-5xl overflow-hidden rounded-3xl bg-white shadow-xl md:grid-cols-2">
         <div className="relative hidden min-h-[600px] overflow-hidden md:block">
           <img
-            src="/src/assets/images/Krishna_pic.jpg"
+            src={krishnaImage}
             alt="Krishna Ji"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -87,7 +90,7 @@ const SignUp = () => {
             <div className="mb-8 text-center">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-amber-200 bg-amber-50">
                 <img
-                  src="/src/assets/images/logo.jpg"
+                  src={logoImage}
                   alt="Gopal Ji Ki Dukaan"
                   className="h-full w-full object-cover"
                 />
